@@ -57,6 +57,7 @@ class App extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log('App getDerivedStateFromProps');
+
     return null;
   }
 

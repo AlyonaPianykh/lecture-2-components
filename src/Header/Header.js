@@ -4,7 +4,7 @@ import './Header.scss';
 
 const CN = 'default-header';
 
-export const Header = ({ className, greeting = "test", showLogo,children }) => {
+export const Header = ({ className, greeting = "test", showLogo, children } ) => {
   return (
     <header className={`${CN} ${className}`}>
       { showLogo && (
