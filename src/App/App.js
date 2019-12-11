@@ -40,10 +40,10 @@ class App extends Component {
   };
 
   deleteHandler = (pet) => {
-    const likedDoggos = this.state.likedDoggos.concat();
-    const findedPet = likedDoggos.findIndex(el =>  el === pet)
-    likedDoggos.splice(findedPet, 1);
-    // this.setState({likedDoggos: this.state.likedDoggos.filter(el => el !== pet)})
+    // const likedDoggos = this.state.likedDoggos.concat();
+    // const findedPet = likedDoggos.findIndex(el =>  el === pet)
+    // likedDoggos.splice(findedPet, 1);
+    this.setState({likedDoggos: this.state.likedDoggos.filter(el => el !== pet)})
   };
 
   onLoadDoggoClick = () => {
