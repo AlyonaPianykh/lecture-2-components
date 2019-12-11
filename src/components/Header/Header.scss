@@ -19,4 +19,14 @@
   &-logo {
     height: 48px;
   }
+
+  &__link {
+    color: #61dafb;
+    margin: 0 10px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

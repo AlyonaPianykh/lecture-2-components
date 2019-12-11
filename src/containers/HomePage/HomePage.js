@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import { Header } from '../Header/Header';
-import { Button } from '../Button/Button';
-import { LikedPetsList } from '../LikedPetsList/LikedPetsList';
+import { Button } from '../../components/Button/Button';
+import { LikedPetsList } from '../../components/LikedPetsList/LikedPetsList';
+import PetPreview from '../../components/PetPreview/PetPreview';
 
-import './App.scss';
-import PetPreview from '../PetPreview/PetPreview';
+import './HomePage.scss';
 
-const CN = 'App';
+const CN = 'HomePage';
 
-class App extends Component {
+class HomePage extends Component {
+
   loadDoggo = async () => {
     const { url } = this.state;
     let response = await fetch(url);
 
-    console.log('App load doggo');
+    console.log('HomePage load doggo');
 
     if (response.ok) {
       let { message = '' } = await response.json();
@@ -52,17 +52,17 @@ class App extends Component {
       likedDoggos: []
     };
 
-    console.log('App constructor');
+    console.log('HomePage constructor');
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('App getDerivedStateFromProps');
+    console.log('HomePage getDerivedStateFromProps');
 
     return null;
   }
 
   componentDidMount() {
-    console.log('App componentDidMount');
+    console.log('HomePage componentDidMount');
     this.loadDoggo();
   }
 
@@ -79,15 +79,9 @@ class App extends Component {
   render() {
     const { doggoUrl, likedDoggos } = this.state;
 
-    console.log('App render');
+    console.log('HomePage render');
     return (
       <div className={`${CN}`}>
-        <Header
-          className="App-header"
-          showLogo
-          greeting="Doggo app"
-        />
-
         <div className={`${CN}__container`}>
           <div className={`${CN}__left-side`}>
             <PetPreview imageUrl={doggoUrl}/>
@@ -103,4 +97,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default HomePage;

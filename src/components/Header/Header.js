@@ -1,5 +1,9 @@
 import React from 'react';
-import logo from '../logo.svg';
+import logo from '../../logo.svg';
+
+import {
+  Link
+} from "react-router-dom";
 import './Header.scss';
 
 const CN = 'default-header';
@@ -14,6 +18,9 @@ export const Header = ({ className, greeting = "test", showLogo, children } ) =>
 
       {greeting}
       {children}
+
+      <Link to="/" className={`${CN}__link`}>Home</Link>
+      <Link to="/doggos" className={`${CN}__link`} >Doggos</Link>
     </header>
   );
 };
