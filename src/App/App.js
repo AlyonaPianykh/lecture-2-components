@@ -66,6 +66,16 @@ class App extends Component {
     this.loadDoggo();
   }
 
+  deleteDoggo = (pet) => {
+    const {likedDoggos} = this.state;
+
+    const doggos = likedDoggos.filter(dogs => dogs !== pet);
+
+    this.setState({
+      likedDoggos: doggos
+    })
+  }
+
   render() {
     const { doggoUrl, likedDoggos } = this.state;
 
@@ -86,7 +96,7 @@ class App extends Component {
               <Button label="Like doggo" onClick={this.onLikeDoggo}/>
             </div>
           </div>
-          <LikedPetsList list={likedDoggos}/>
+          <LikedPetsList list={likedDoggos} remove={this.deleteDoggo}/>
         </div>
       </div>
     );

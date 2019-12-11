@@ -37,6 +37,10 @@ export class LikedPetsList extends Component {
     console.log('LikedPetsList componentDidUpdate');
   }
 
+  delDog = (url) => {
+    this.props.remove(url)
+  };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const { list } = nextProps;
     const { urlList } = prevState;
@@ -64,11 +68,16 @@ export class LikedPetsList extends Component {
         {
           urlList.map(pet => {
             return (
-              <img
-                key={pet}
-                src={pet}
-                alt="pet"
-              />
+                <div>
+                  <img
+                      key={pet}
+                      src={pet}
+                      alt="pet"
+                  />
+                  <Button label="Delete doggo" onClick={this.delDog.bind(null, pet)}/>
+
+                </div>
+
             )
           })
         }
