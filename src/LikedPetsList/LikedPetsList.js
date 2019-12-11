@@ -64,11 +64,17 @@ export class LikedPetsList extends Component {
         {
           urlList.map(pet => {
             return (
+                <div className= "likeDoggoDiv">
               <img
                 key={pet}
                 src={pet}
                 alt="pet"
               />
+              <button onClick={this.props.onClickDelete.bind(this, pet)}>
+                Delete
+              </button>
+                </div>
+
             )
           })
         }

@@ -39,6 +39,13 @@ class App extends Component {
     }
   };
 
+  deleteHandler = (pet) => {
+    const likedDoggos = this.state.likedDoggos.concat();
+    const findedPet = likedDoggos.findIndex(el =>  el === pet)
+    likedDoggos.splice(findedPet, 1);
+    // this.setState({likedDoggos: this.state.likedDoggos.filter(el => el !== pet)})
+  };
+
   onLoadDoggoClick = () => {
     this.loadDoggo();
   };
@@ -66,6 +73,7 @@ class App extends Component {
     this.loadDoggo();
   }
 
+
   render() {
     const { doggoUrl, likedDoggos } = this.state;
 
@@ -86,7 +94,9 @@ class App extends Component {
               <Button label="Like doggo" onClick={this.onLikeDoggo}/>
             </div>
           </div>
-          <LikedPetsList list={likedDoggos}/>
+          <LikedPetsList
+              onClickDelete = {this.deleteHandler}
+              list={likedDoggos}/>
         </div>
       </div>
     );
