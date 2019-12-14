@@ -8,8 +8,9 @@ import {
 
 import HomePage from './containers/HomePage';
 import DoggoPage from './containers/DoggoPage/DoggoPage';
-import { Header } from './components/Header';
 import NotFoundPage from './containers/NotFoundPage/NotFoundPage';
+import CatPage from "./containers/CatPage/CatPage";
+import Header from "./components/Header/Header";
 
 export default function App() {
   return (
@@ -27,6 +28,10 @@ export default function App() {
 
         <Route path="/doggos">
           <DummyComponent/>
+        </Route>
+
+        <Route path="/cats">
+          <CatPage/>
         </Route>
 
         <Route path="/doggo/:id">
