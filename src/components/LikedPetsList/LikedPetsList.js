@@ -20,6 +20,11 @@ function PetsListItem(props) {
         className={`${CN}__btn--delete`}
         onClick={onDelete}
       />
+      {/*<DeleteAllIcon*/}
+      {/*  data-target={pet}*/}
+      {/*  className={`${CN}__btn--delete`}*/}
+      {/*  onClick={onDelete}*/}
+      {/*/>*/}
     </div>
   );
 }
