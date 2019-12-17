@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import HomePageComponent from './HomePage';
-import { likeDoggo, deleteDoggo, deleteAllDoggo } from '../../actions/doggos';
+import { likeDoggo } from '../../actions/doggos';
 
 const mapStateToProps = (state) => {
   const { doggos: { likedDoggos } } = state;
@@ -11,9 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = ({
-  likeDoggo,
-  deleteDoggo,
-  deleteAllDoggo// this would be in HomePageComponent's props
+  likeDoggo // this would be in HomePageComponent's props
 });
 
 

@@ -5,7 +5,7 @@ import PetPreview from '../../components/PetPreview/PetPreview';
 
 import './HomePage.scss';
 import { Modal } from '../../components/Modal';
-import { likeDoggo, deleteDoggo, deleteAllDoggo } from '../../actions/doggos';
+import { likeDoggo } from '../../actions/doggos';
 
 const CN = 'HomePage';
 
@@ -55,6 +55,7 @@ class HomePage extends Component {
     this.state = {
       url: 'https://dog.ceo/api/breeds/image/random',
       doggoUrl: '',
+      likedDoggos: [], // todo: remove! this is not needed anymore
       isModalOpened: false
     };
 
@@ -68,19 +69,13 @@ class HomePage extends Component {
 
   // todo: this functionality should be moved to redux action/reducer. not working now
   deleteDoggo = (pet) => {
-    const { deleteDoggo } = this.props;
+    const {likedDoggos} = this.state;
 
-    deleteDoggo(pet);
+    const doggos = likedDoggos.filter(dogs => dogs !== pet);
 
-    // const doggos = likedDoggos.filter(dogs => dogs !== pet);
-  };
-
-  deleteAllDoggo = (pet) => {
-    const { deleteAllDoggo } = this.props;
-
-    deleteAllDoggo(pet);
-
-    // const doggos = likedDoggos.filter(dogs => dogs !== pet);
+    this.setState({
+      likedDoggos: doggos
+    })
   };
 
   render() {
@@ -100,7 +95,6 @@ class HomePage extends Component {
               <Button label="Load new doggo" onClick={this.onLoadDoggoClick}/>
               <Button label="Show doggo in modal" onClick={this.toggleModal}/>
               <Button label="Like doggo" onClick={this.onLikeDoggo}/>
-              <Button label="Delete all doggo" onClick={this.deleteAllDoggo}/>
             </div>
           </div>
           <LikedPetsList list={likedDoggos} remove={this.deleteDoggo}/>
