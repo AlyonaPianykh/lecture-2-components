@@ -5,7 +5,6 @@ import PetPreview from '../../components/PetPreview/PetPreview';
 
 import './HomePage.scss';
 import { Modal } from '../../components/Modal';
-import { likeDoggo } from '../../actions/doggos';
 
 const CN = 'HomePage';
 
@@ -36,6 +35,20 @@ class HomePage extends Component {
     }
   };
 
+  onDeleteDoggo = (url) => {
+    const { deleteDoggo } = this.props;
+    deleteDoggo && deleteDoggo(url);
+  };
+
+  onDeleteAllDoggos = () => {
+    const {deleteAllDoggos} = this.props;
+
+    deleteAllDoggos && deleteAllDoggos();
+  };
+
+  onUndoDoggos = () => {
+
+  };
 
   onLoadDoggoClick = () => {
     this.loadDoggo();
@@ -68,15 +81,15 @@ class HomePage extends Component {
   }
 
   // todo: this functionality should be moved to redux action/reducer. not working now
-  deleteDoggo = (pet) => {
-    const {likedDoggos} = this.state;
-
-    const doggos = likedDoggos.filter(dogs => dogs !== pet);
-
-    this.setState({
-      likedDoggos: doggos
-    })
-  };
+  // deleteDoggo = (pet) => {
+  //   const {likedDoggos} = this.state;
+  //
+  //   const doggos = likedDoggos.filter(dogs => dogs !== pet);
+  //
+  //   this.setState({
+  //     likedDoggos: doggos
+  //   })
+  // };
 
   render() {
     const { doggoUrl, isModalOpened } = this.state;
@@ -95,9 +108,11 @@ class HomePage extends Component {
               <Button label="Load new doggo" onClick={this.onLoadDoggoClick}/>
               <Button label="Show doggo in modal" onClick={this.toggleModal}/>
               <Button label="Like doggo" onClick={this.onLikeDoggo}/>
+              <Button label="Delete all doggos" onClick={this.onDeleteAllDoggos}/>
+              <Button label="Undo" onClick={this.onUndoDoggos}/>
             </div>
           </div>
-          <LikedPetsList list={likedDoggos} remove={this.deleteDoggo}/>
+          <LikedPetsList list={likedDoggos} remove={this.onDeleteDoggo}/>
         </div>
       </div>
     );
