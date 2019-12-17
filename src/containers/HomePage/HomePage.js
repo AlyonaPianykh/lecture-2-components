@@ -5,7 +5,7 @@ import PetPreview from '../../components/PetPreview/PetPreview';
 
 import './HomePage.scss';
 import { Modal } from '../../components/Modal';
-import { likeDoggo } from '../../actions/doggos';
+// import {deleteDoggo, likeDoggo, deleteAllDoggo} from '../../actions/doggos';
 
 const CN = 'HomePage';
 
@@ -69,13 +69,22 @@ class HomePage extends Component {
 
   // todo: this functionality should be moved to redux action/reducer. not working now
   deleteDoggo = (pet) => {
-    const {likedDoggos} = this.state;
+    // const {likedDoggos} = this.state;
+    const { deleteDoggo } = this.props;
 
-    const doggos = likedDoggos.filter(dogs => dogs !== pet);
+    deleteDoggo(pet);
 
-    this.setState({
-      likedDoggos: doggos
-    })
+    // const doggos = likedDoggos.filter(dogs => dogs !== pet);
+
+    // this.setState({
+    //   likedDoggos: doggos
+    // })
+  };
+
+  deleteAllDoggo = (pet) => {
+    const { deleteAllDoggo } = this.props;
+
+    deleteAllDoggo(pet)
   };
 
   render() {
@@ -95,6 +104,7 @@ class HomePage extends Component {
               <Button label="Load new doggo" onClick={this.onLoadDoggoClick}/>
               <Button label="Show doggo in modal" onClick={this.toggleModal}/>
               <Button label="Like doggo" onClick={this.onLikeDoggo}/>
+              <Button label="Delete all Doggo like" onClick={this.deleteAllDoggo}/>
             </div>
           </div>
           <LikedPetsList list={likedDoggos} remove={this.deleteDoggo}/>
