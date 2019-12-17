@@ -42,7 +42,7 @@ class HomePage extends Component {
   };
 
   toggleModal = () => {
-    const {isModalOpened} = this.state;
+    const { isModalOpened } = this.state;
 
     this.setState({
       isModalOpened: !isModalOpened
@@ -69,13 +69,17 @@ class HomePage extends Component {
 
   // todo: this functionality should be moved to redux action/reducer. not working now
   deleteDoggo = (pet) => {
-    const {likedDoggos} = this.state;
+    const { removeDoggo } = this.props;
 
-    const doggos = likedDoggos.filter(dogs => dogs !== pet);
 
-    this.setState({
-      likedDoggos: doggos
-    })
+    console.log(removeDoggo);
+    removeDoggo && removeDoggo(pet, 'sdadas');
+  };
+
+  removeAll = () => {
+    const { removeAll } = this.props;
+
+    removeAll();
   };
 
   render() {
@@ -87,17 +91,18 @@ class HomePage extends Component {
       <div className={`${CN}`}>
         <div className={`${CN}__container`}>
           <Modal isOpen={isModalOpened} handleModalToggle={this.toggleModal}>
-            <img src={doggoUrl} alt="liked-doggo"/>
+            <img src={doggoUrl} alt="liked-doggo" />
           </Modal>
           <div className={`${CN}__left-side`}>
-            <PetPreview imageUrl={doggoUrl}/>
+            <PetPreview imageUrl={doggoUrl} />
             <div>
-              <Button label="Load new doggo" onClick={this.onLoadDoggoClick}/>
-              <Button label="Show doggo in modal" onClick={this.toggleModal}/>
-              <Button label="Like doggo" onClick={this.onLikeDoggo}/>
+              <Button label="Load new doggo" onClick={this.onLoadDoggoClick} />
+              <Button label="Show doggo in modal" onClick={this.toggleModal} />
+              <Button label="Like doggo" onClick={this.onLikeDoggo} />
+              <Button label="Remove all doggos" onClick={this.removeAll} />
             </div>
           </div>
-          <LikedPetsList list={likedDoggos} remove={this.deleteDoggo}/>
+          <LikedPetsList list={likedDoggos} remove={this.deleteDoggo} />
         </div>
       </div>
     );

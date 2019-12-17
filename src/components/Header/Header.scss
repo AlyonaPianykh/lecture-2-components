@@ -29,4 +29,22 @@
       text-decoration: underline;
     }
   }
+
+  &__likes {
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+    margin-right: 20px;
+  }
+
+  &__counter {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16px;
+  }
 }
