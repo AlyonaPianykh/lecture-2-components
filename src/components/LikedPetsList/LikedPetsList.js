@@ -51,7 +51,7 @@ export class LikedPetsList extends Component {
         <Button
           label="Delete all"
           onClick={this.onDeleteAllDoggos}
-          className={`${CN}__btn--delete`}
+          className={`${CN}__btn`}
         />
         {
           urlList.map(pet => {
