@@ -9,6 +9,7 @@ const doggos = (state = intialState, action) => {
 
   switch (action.type) {
     case ADD_DOGGO: {
+      console.log('reducer ADD_DOGGO triggered')
       const { payload: { doggoUrl } } = action;
 
       const { likedDoggos } = state;
@@ -30,7 +31,9 @@ const doggos = (state = intialState, action) => {
     }
 
     case REMOVE_ALL: {
-      return intialState;
+      return {
+        likedDoggos: []
+      };
     }
 
     default:

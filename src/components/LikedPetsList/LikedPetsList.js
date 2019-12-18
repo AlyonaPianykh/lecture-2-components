@@ -28,6 +28,7 @@ export class LikedPetsList extends Component {
   deleteDoggo = (e) => {
     debugger;
     const { remove } = this.props;
+
     const id = e.currentTarget.getAttribute('data-target');
 
 
@@ -43,8 +44,6 @@ export class LikedPetsList extends Component {
   };
 
   render() {
-    console.log('LikedPetsList render');
-
     const { list: urlList } = this.props;
 
     return (

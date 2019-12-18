@@ -1,16 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from './reducers';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
+
+export const logger = (store) => (next) => (action) => {
+  console.log('current state ', store.getState());
+  console.log(`Action type: ${action.type}, payload: ${action.payload}`);
+
+  return next(action);
+};
+
 const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    applyMiddleware(thunk, logger)
+  )
 );
 
 ReactDOM.render(
