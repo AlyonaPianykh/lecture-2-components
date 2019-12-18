@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ReactComponent as DeleteIcon } from '../../assets/delete.svg';
 
 import './LikedPetsList.scss';
+import {Button} from "../Button";
 
 const CN = 'liked-pets-list';
 
@@ -25,14 +26,6 @@ function PetsListItem(props) {
 }
 
 export class LikedPetsList extends Component {
-  deleteDoggo = (e) => {
-    debugger;
-    const { remove } = this.props;
-    const id = e.currentTarget.getAttribute('data-target');
-
-
-    id && remove && remove(id);
-  };
 
   delete = (id) => {
     const { remove } = this.props;
@@ -42,6 +35,12 @@ export class LikedPetsList extends Component {
     }
   };
 
+  onDeleteAllDoggos = () => {
+    const { removeAll } = this.props;
+
+    removeAll && removeAll()
+  };
+
   render() {
     console.log('LikedPetsList render');
 
@@ -49,6 +48,11 @@ export class LikedPetsList extends Component {
 
     return (
       <div className={CN}>
+        <Button
+          label="Delete all"
+          onClick={this.onDeleteAllDoggos}
+          className={`${CN}__btn--delete`}
+        />
         {
           urlList.map(pet => {
             return (

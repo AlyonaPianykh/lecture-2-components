@@ -1,4 +1,8 @@
-import {ADD_DOGGO, REMOVE_DOGGO} from '../action-types';
+import {
+  ADD_DOGGO,
+  REMOVE_DOGGO,
+  REMOVE_ALL_DOGGOS
+} from '../action-types';
 
 export const likeDoggo = (doggoUrl) => ({
   type: ADD_DOGGO,
@@ -12,4 +16,8 @@ export const removeDoggo = (doggoUrl) => ({
   payload: {
     doggoUrl
   }
+});
+
+export const removeAllDoggos = () => ({
+  type: REMOVE_ALL_DOGGOS
 });

@@ -72,6 +72,12 @@ class HomePage extends Component {
     removeDoggo && removeDoggo(pet);
   };
 
+  onDeleteAllDoggos = () => {
+    const { removeAllDoggos } = this.props;
+
+    removeAllDoggos && removeAllDoggos()
+  };
+
   render() {
     const { doggoUrl, isModalOpened } = this.state;
     const { likedDoggos } = this.props;
@@ -91,7 +97,11 @@ class HomePage extends Component {
               <Button label="Like doggo" onClick={this.onLikeDoggo}/>
             </div>
           </div>
-          <LikedPetsList list={likedDoggos} remove={this.onDeleteDoggo}/>
+          <LikedPetsList
+            list={likedDoggos}
+            remove={this.onDeleteDoggo}
+            removeAll={this.onDeleteAllDoggos}
+          />
         </div>
       </div>
     );
