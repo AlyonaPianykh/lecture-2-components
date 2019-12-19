@@ -1,4 +1,4 @@
-import { ADD_DOGGO } from '../action-types';
+import { ADD_DOGGO, DEL_DOGGO, DEL_ALL_DOGGOS } from '../action-types';
 
 const intialState = {
   likedDoggos: []
@@ -8,17 +8,29 @@ const intialState = {
 const doggos = (state = intialState, action) => {
 
   switch (action.type) {
-    case ADD_DOGGO:
+    case ADD_DOGGO: {
       const { payload: { doggoUrl } } = action;
-
       const { likedDoggos } = state;
-
       // this is new state
       return {
         likedDoggos: [...likedDoggos, doggoUrl]
       };
+    }
 
-      // todo: add remove doggo functionality
+    case DEL_DOGGO: {
+      const { payload: { doggoUrl } } = action;
+      const { likedDoggos } = state;
+      return {
+        likedDoggos: likedDoggos.filter(doggos => doggos !== doggoUrl)
+      };
+    }
+
+    case DEL_ALL_DOGGOS: {
+      return {
+        likedDoggos: intialState.likedDoggos
+      };
+    }
+
     default:
       return state
   }
