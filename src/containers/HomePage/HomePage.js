@@ -5,22 +5,28 @@ import PetPreview from '../../components/PetPreview/PetPreview';
 
 import './HomePage.scss';
 import { Modal } from '../../components/Modal';
-import { likeDoggo } from '../../actions/doggos.action';
-import { getFilters } from '../../actions/filters.action';
 
 const CN = 'HomePage';
 
 class HomePage extends Component {
   loadDoggo = async () => {
+    const { setLoading } = this.props;
+
+    setLoading(true);
+
     const { url } = this.state;
     let response = await fetch(url);
 
     if (response.ok) {
       let { message = '' } = await response.json();
+
+      setLoading(false);
+
       this.setState({
         doggoUrl: message
       });
     } else {
+      setLoading(false);
       alert('Error HTTP: ' + response.status);
     }
   };
@@ -83,9 +89,11 @@ class HomePage extends Component {
 
   render() {
     const { doggoUrl, isModalOpened } = this.state;
-    const { likedDoggos } = this.props;
+    const { likedDoggos, loading } = this.props;
 
-    return (
+    console.log(loading);
+
+    return loading ?( <div>Loading...</div>) :  (
       <div className={`${CN}`}>
         <div className={`${CN}__container`}>
           <Modal isOpen={isModalOpened} handleModalToggle={this.toggleModal}>

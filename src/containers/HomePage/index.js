@@ -1,23 +1,26 @@
 import { connect } from 'react-redux';
 import HomePageComponent from './HomePage';
-import { likeDoggo,removeDoggo, removeAll } from '../../actions/doggos.action';
+import { likeDoggo,removeDoggo, removeAll, setLoading } from '../../actions/doggos.action';
 import { getFilters } from '../../actions/filters.action';
 
 const mapStateToProps = (state) => {
-  const { doggos: { likedDoggos } } = state;
+  const { doggos: { likedDoggos }, filters: {loading} } = state;
+
+  console.log({loading});
 
   return {
-    likedDoggos // this would be in HomePageComponent's props
+    likedDoggos, // this would be in HomePageComponent's props
+    loading
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getFilters: (args) => dispatch(getFilters(args)),
-    likeDoggo: (args) => dispatch(likeDoggo(args)),
-    removeDoggo: (args) => dispatch(removeDoggo(args)),
-    removeAll: (args) => dispatch(removeAll(args)),
-  }
+
+const mapDispatchToProps =  {
+    getFilters,
+    likeDoggo,
+    removeDoggo,
+    removeAll,
+    setLoading,
 };
 
 export default connect(

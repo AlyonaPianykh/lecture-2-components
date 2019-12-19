@@ -9,3 +9,4 @@ export const REMOVE_ALL = 'REMOVE_ALL';
 
 export const GET_FILTERS = 'GET_FILTERS';
 export const GET_LIST_BY_BREED = 'GET_LIST_BY_BREED';
+export const LOADING = 'LOADING';

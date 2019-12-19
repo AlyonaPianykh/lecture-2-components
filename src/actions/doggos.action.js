@@ -1,7 +1,7 @@
-import { ADD_DOGGO, REMOVE_ALL, REMOVE_DOGGO } from '../action-types';
+import {ADD_DOGGO, LOADING, REMOVE_ALL, REMOVE_DOGGO} from '../action-types';
 
 export const likeDoggo = (doggoUrl) => {
-  console.log('action ADD_DOGGO triggered')
+  console.log('action ADD_DOGGO triggered');
   return {
     type: ADD_DOGGO,
     payload: {
@@ -20,3 +20,12 @@ export const removeDoggo = (doggoUrl) => ({
 export const removeAll = () => ({
   type: REMOVE_ALL
 });
+
+export const setLoading = (loading) => {
+  return ({
+    type: LOADING,
+    payload: {
+      loading
+    }
+  });
+};

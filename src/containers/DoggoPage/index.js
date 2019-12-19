@@ -4,13 +4,14 @@ import { getDoggosByBreed, getFilters } from '../../actions/filters.action';
 import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, ownProps) => {
-  const { filters: { images, filtersObject } } = state;
+  const { filters: { images, filtersObject, loading } } = state;
 
   const { counter = 10 } = ownProps;
 
   return {
     data: filtersObject, // this would be in HomePageComponent's props,
-    images: images.slice(0, counter)
+    images: images.slice(0, counter),
+    loading
   };
 };
 

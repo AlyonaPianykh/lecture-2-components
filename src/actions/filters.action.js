@@ -1,4 +1,4 @@
-import { GET_FILTERS, GET_LIST_BY_BREED } from '../action-types';
+import { GET_FILTERS, GET_LIST_BY_BREED, LOADING } from '../action-types';
 import axios from 'axios';
 
 export const getFilters = function () {
@@ -25,6 +25,12 @@ export const getDoggosByBreed = function(bread) {
   if (!bread) return;
 
   return (dispatch) => {
+      dispatch({
+          type: LOADING,
+          payload: {
+              loading: true
+          }
+      });
     return axios.get(`https://dog.ceo/api/breed/${bread}/images`)
       .then(({ data = {} }) => {
         const { message = {} } = data;
@@ -35,9 +41,22 @@ export const getDoggosByBreed = function(bread) {
             images: message
           }
         });
+
+          dispatch({
+              type: LOADING,
+              payload: {
+                  loading: false
+              }
+          });
       })
       .catch(err => {
-        console.log(err);
+          console.log(err);
+          dispatch({
+              type: LOADING,
+              payload: {
+                  loading: false
+              }
+          });
       });
   };
 };

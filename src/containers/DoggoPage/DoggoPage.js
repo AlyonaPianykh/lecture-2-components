@@ -23,9 +23,10 @@ export default class DoggoPage extends Component {
 
   renderList = () => {
     const { currentBreed } = this.state;
-    const { images } = this.props;
+    const { images, loading } = this.props;
 
     return (
+      loading ? <div>Loading...</div> :
       <div className={`CN__list`}>
         {
           images.map(item => {
