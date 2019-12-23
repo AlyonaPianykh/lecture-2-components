@@ -10,43 +10,46 @@ import HomePage from './containers/HomePage';
 import DoggoPage from './containers/DoggoPage';
 import { Header } from './components/Header';
 import NotFoundPage from './containers/NotFoundPage/NotFoundPage';
+import PageLayout from './components/PageLayout';
 
 export default function App() {
   return (
     <Router>
-      <Header
-        className="App-header"
-        showLogo
-        greeting="Doggo app"
-      />
+      <PageLayout>
+        <Header
+          className="App-header"
+          showLogo
+          greeting="Doggo app"
+        />
 
-      <Switch>
-        <Route exact path="/">
-          <HomePage/>
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <HomePage/>
+          </Route>
 
-        <Route path="/doggos">
-          <DoggoPage counter={20}/>
-        </Route>
+          <Route path="/doggos">
+            <DoggoPage counter={20}/>
+          </Route>
 
-        {/*<Route path="/doggo/:id">*/}
+          {/*<Route path="/doggo/:id">*/}
           {/*<DoggoPage/>*/}
-        {/*</Route>*/}
+          {/*</Route>*/}
 
-        <Route
-          path="/not-found"
-          render={routeProps => (
-            <NotFoundPage {...routeProps}/>
-          )}
-        />
+          <Route
+            path="/not-found"
+            render={routeProps => (
+              <NotFoundPage {...routeProps}/>
+            )}
+          />
 
-        <Redirect
-          from="*"
-          to={{
-            pathname: '/not-found'
-          }}
-        />
-      </Switch>
+          <Redirect
+            from="*"
+            to={{
+              pathname: '/not-found'
+            }}
+          />
+        </Switch>
+      </PageLayout>
     </Router>
   );
 }

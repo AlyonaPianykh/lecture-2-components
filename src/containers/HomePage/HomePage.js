@@ -5,6 +5,7 @@ import PetPreview from '../../components/PetPreview/PetPreview';
 
 import './HomePage.scss';
 import { Modal } from '../../components/Modal';
+import { Label } from '../../components/Label';
 import { likeDoggo } from '../../actions/doggos.action';
 import { getFilters } from '../../actions/filters.action';
 
@@ -76,9 +77,10 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    const { getFilters } = this.props;
+    const { getFilters, getMovies } = this.props;
     this.loadDoggo();
     getFilters();
+    getMovies();
   }
 
   render() {
@@ -91,6 +93,7 @@ class HomePage extends Component {
           <Modal isOpen={isModalOpened} handleModalToggle={this.toggleModal}>
             <img src={doggoUrl} alt="liked-doggo"/>
           </Modal>
+          <Label/>
           <div className={`${CN}__left-side`}>
             <PetPreview imageUrl={doggoUrl}/>
             <div>

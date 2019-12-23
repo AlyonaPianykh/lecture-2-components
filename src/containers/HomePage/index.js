@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import HomePageComponent from './HomePage';
 import { likeDoggo,removeDoggo, removeAll } from '../../actions/doggos.action';
 import { getFilters } from '../../actions/filters.action';
+import { getMovies } from '../../actions/movie-test';
 
 const mapStateToProps = (state) => {
   const { doggos: { likedDoggos } } = state;
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     likeDoggo: (args) => dispatch(likeDoggo(args)),
     removeDoggo: (args) => dispatch(removeDoggo(args)),
     removeAll: (args) => dispatch(removeAll(args)),
+    getMovies: (args) => dispatch(getMovies(args)),
   }
 };
 
