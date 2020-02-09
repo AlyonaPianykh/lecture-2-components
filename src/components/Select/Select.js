@@ -1,4 +1,8 @@
 import React from 'react';
+import { useTheme } from '@material-ui/core/styles';
+// import clsx from 'clsx';
+
+import { withStyles } from '@material-ui/core/styles';
 
 export const GEOS = [
   'Europe',
@@ -7,10 +11,23 @@ export const GEOS = [
   'Canada'
 ];
 
-export const Select = ({ selectedOption, onSelect }) => {
+const styles = {
+    root: {
+        background: 'red',
+        borderRadius: 3,
+        border: 0,
+        color: 'black',
+        height: 36,
+        padding: '0 30px',
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    },
+};
+
+const Select = ({ selectedOption, onSelect, classes }) => {
+     // const theme = useTheme();
 
   return (
-    <select value={selectedOption} onChange={onSelect}>
+    <select value={selectedOption} onChange={onSelect} className={classes.root}>
       <option disabled>Choose your geo</option>
       {
         GEOS.map(item => (
@@ -26,3 +43,7 @@ export const Select = ({ selectedOption, onSelect }) => {
     </select>
   );
 };
+
+
+
+export default withStyles(styles)(Select);

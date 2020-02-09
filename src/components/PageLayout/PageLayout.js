@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ThemeContext, GeoContext } from '../../context';
+import clsx from 'clsx';
 import './PageLayout.scss';
 
 const CN = 'awesome-app-page-layout';
@@ -29,7 +30,6 @@ class PageLayout extends Component {
     const { isDarkTheme, selectedGeo } = this.state;
     const { children } = this.props;
 
-    const darkCN = isDarkTheme ? `${CN}--dark` : '';
     return (
       <GeoContext.Provider
         value={{
@@ -43,7 +43,10 @@ class PageLayout extends Component {
             switchDarkTheme: this.switchDarkTheme
           }}
         >
-          <div className={`${CN} ${darkCN}`}>
+          <div className={
+            clsx(CN, {
+              [`${CN}--dark`]: isDarkTheme
+            })}>
             {children}
           </div>
         </ThemeContext.Provider>

@@ -12,6 +12,7 @@ const styles = {
   },
   subCategory: {
     'margin-left': '20px',
+    background: '#ececec'
   }
 };
 
@@ -42,6 +43,8 @@ class FiltersDropDown extends Component {
     if (!data[breed] || !data[breed].length) return null;
 
     return data[breed].map(item => {
+
+      console.log('classes.subCategory', classes.subCategory)
       return (
         <MenuItem
           className={classes.subCategory}
@@ -57,7 +60,6 @@ class FiltersDropDown extends Component {
     const { classes, data } = this.props;
     const { selectedOption } = this.state;
 
-    debugger
     return (
         <FormControl className={classes.formControl}>
           <Select
@@ -82,3 +84,4 @@ class FiltersDropDown extends Component {
 
 
 export default withStyles(styles)(FiltersDropDown);
+

@@ -16,7 +16,7 @@ export const Header = ({ className, greeting = 'test', showLogo, children, liked
   const renderHeader = (themeProps) => {
     const { selectedGeo, selectGeo } = themeProps;
 
-    console.log('selectedGeo', selectedGeo);
+    //console.log('selectedGeo', selectedGeo);
     return (
       <header className={`${CN} ${className}`}>
         {showLogo && (
